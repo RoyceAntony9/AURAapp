@@ -2254,8 +2254,8 @@ def _forecast_result_to_report_data(state: Dict[str, Any], result: ForecastResul
         }
 
     # Build competitors_battle from competitors in canonical format
-    comp_a = competitors_list[0] if len(competitors_list) > 0 else "Competitor A"
-    comp_b = competitors_list[1] if len(competitors_list) > 1 else "Competitor B"
+    comp_a = competitors_list[0].get("name", "Competitor A") if len(competitors_list) > 0 and isinstance(competitors_list[0], dict) else "Competitor A"
+    comp_b = competitors_list[1].get("name", "Competitor B") if len(competitors_list) > 1 and isinstance(competitors_list[1], dict) else "Competitor B"
     
     comp_battle = {
         "winner": "Your Product" if r.final_adoption_pct > 35 else comp_a,
