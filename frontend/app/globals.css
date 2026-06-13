@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #06060c;
+  --color-foreground: #f3f4f6;
+  --color-primary: #00f0ff;
+  --color-primary-dark: #008fa0;
+  --color-accent: #3b82f6;
+  --color-card: #0c0d16;
+  --color-card-border: #1e2035;
+  --color-card-hover: #16182a;
+  
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+:root {
+  --background: #06060c;
+  --foreground: #f3f4f6;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  background-image: 
+    linear-gradient(rgba(30, 32, 53, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 32, 53, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Cyber Scanline effect */
+body::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 99999;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Custom styles and animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.05);
+  }
+}
+
+.glow-orb-1 {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, rgba(59, 130, 246, 0.02) 70%, transparent 100%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: pulse-glow 12s infinite ease-in-out;
+  z-index: 0;
+}
+
+.glow-orb-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(0, 240, 255, 0.01) 70%, transparent 100%);
+  filter: blur(100px);
+  pointer-events: none;
+  animation: pulse-glow 15s infinite ease-in-out alternate;
+  z-index: 0;
+}
+
+/* Monospace Accent utility */
+.data-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.025em;
+}
+
+/* Cyber Terminal Border Glow */
+.cyber-border {
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-border:hover {
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.08), inset 0 0 2px rgba(0, 240, 255, 0.1);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #06060c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2035;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
