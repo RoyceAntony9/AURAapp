@@ -1680,7 +1680,7 @@ export default function DashboardPage() {
                 <div className="space-y-2">
                   {simReport.market_segments.map((seg, idx) => (
                     <button
-                      key={seg.id}
+                      key={seg.id || seg.name || idx}
                       onClick={() => {
                         setSelectedSegment(seg);
                         setPersonasPage(1);
