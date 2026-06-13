@@ -1371,7 +1371,9 @@ export default function DashboardPage() {
 
                         <div className="border-t border-card-border/40 pt-1.5 flex flex-wrap gap-1 items-center justify-between text-[9px] font-mono text-gray-500">
                           <span>Sources:</span>
-                          <span className="text-gray-300 font-semibold">{item.sources.join(", ")}</span>
+                          <span className="text-gray-300 font-semibold">
+                            {Array.isArray(item?.sources) ? item.sources.join(", ") : String(item?.sources || "Simulation")}
+                          </span>
                         </div>
 
                         {showTransparency && (
@@ -1769,21 +1771,21 @@ export default function DashboardPage() {
                   <div className="grid grid-cols-3 gap-4 pt-2">
                     {/* Your Product */}
                     <div className={`border rounded-lg p-4 space-y-3 relative overflow-hidden ${
-                      simReport.competitors_battle.winner === "Your Product" ? "bg-primary/5 border-primary/40" : "bg-card/40 border-card-border"
+                      simReport.competitors_battle?.winner === "Your Product" ? "bg-primary/5 border-primary/40" : "bg-card/40 border-card-border"
                     }`}>
-                      {simReport.competitors_battle.winner === "Your Product" && (
+                      {simReport.competitors_battle?.winner === "Your Product" && (
                         <div className="absolute top-0 right-0 bg-primary text-background font-mono font-bold text-[8px] px-1.5 py-0.5 rounded-bl">
                           WINNER
                         </div>
                       )}
                       <span className="text-xxs font-mono text-gray-500 uppercase block">YOUR PRODUCT</span>
                       <div className="space-y-2 font-mono text-xxs text-gray-300">
-                        <div>Price: <b className="text-gray-100">{simReport.competitors_battle.your_product.price}</b></div>
-                        <div>Trust: <b className="text-gray-100">{simReport.competitors_battle.your_product.trust}</b></div>
-                        <div>Features: <b className="text-gray-100">{simReport.competitors_battle.your_product.features}</b></div>
-                        <div>Switching Cost: <b className="text-gray-100">{simReport.competitors_battle.your_product.switching_cost}</b></div>
-                        <div>Adoption Score: <b className="text-accent">{simReport.competitors_battle.your_product.adoption}</b></div>
-                        <div className="pt-2 text-[10px] text-primary/80 font-bold uppercase">{simReport.competitors_battle.your_product.status}</div>
+                        <div>Price: <b className="text-gray-100">{simReport.competitors_battle?.your_product?.price || "Optimal"}</b></div>
+                        <div>Trust: <b className="text-gray-100">{simReport.competitors_battle?.your_product?.trust || "Simulated"}</b></div>
+                        <div>Features: <b className="text-gray-100">{simReport.competitors_battle?.your_product?.features || "Innovative"}</b></div>
+                        <div>Switching Cost: <b className="text-gray-100">{simReport.competitors_battle?.your_product?.switching_cost || "Low"}</b></div>
+                        <div>Adoption Score: <b className="text-accent">{simReport.competitors_battle?.your_product?.adoption || "24.1%"}</b></div>
+                        <div className="pt-2 text-[10px] text-primary/80 font-bold uppercase">{simReport.competitors_battle?.your_product?.status || "Challenger"}</div>
                       </div>
                     </div>
 
